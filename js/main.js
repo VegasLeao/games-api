@@ -8,14 +8,20 @@ window.onload = () => {
 
 //refatorado
 const loadGames = () => {
-    console.log('>>>')
     const dataContainer = document.getElementById('data-container');
     
     getAllgames().then(resp =>{
         
-        resp.forEach(game =>{
+        resp.forEach(jogo =>{
             const gamesElement = document.createElement('div');
-            gamesElement.innerHTML = `<strong>${game.nome}</strong><p>${game.preco}</p>`;
+            gamesElement.innerHTML = `
+            <div class= "elemento">
+            <img class= "cardimg" src="${jogo.img}" alt="${jogo.nome}">
+            <hr>
+            <h5 class="cardtitle"> ${jogo.nome} </h5>
+            <hr>
+            <p class= "cardtext"> R$ ${jogo.preco} </p>
+            </div>`;
             dataContainer.appendChild(gamesElement);
         })
     })
@@ -24,7 +30,7 @@ const loadGames = () => {
 document.getElementById('btnCreate') .addEventListener('click', () =>{
     const jogo =   {
         "nome": "The legend of Zelda",
-        "img": "https://codetheworld.io/wp-content/uploads/2023/12/Dark-Souls.png",
+        "img": "https://zelda.nintendo.com/tears-of-the-kingdom/_images/game/logo-shadow.png",
         "preco": 100
       };
       createGame(jogo);
@@ -33,7 +39,7 @@ document.getElementById('btnCreate') .addEventListener('click', () =>{
 document.getElementById('btnDelete') .addEventListener('click', () =>{
     const jogo =  {
         "nome": "The legend of Zelda",
-        "img": "https://codetheworld.io/wp-content/uploads/2023/12/Dark-Souls.png",
+        "img": "https://zelda.nintendo.com/tears-of-the-kingdom/_images/game/logo-shadow.png",
         "preco": 100,
         "id": 3
       };
